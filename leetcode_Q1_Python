@@ -1,0 +1,32 @@
+def merge(nums1, m, nums2, n):
+    results = [0] * (m + n)
+    i, j, k = 0, 0, 0
+    
+    while i < m and j < n:
+        if nums1[i] < nums2[j]:
+            results[k] = nums1[i]
+            i += 1
+        else:
+            results[k] = nums2[j]
+            j += 1
+        k += 1
+    
+    while i < m:
+        results[k] = nums1[i]
+        i += 1
+        k += 1
+
+    while j < n:
+        results[k] = nums2[j]
+        j += 1
+        k += 1
+
+    return results
+
+if __name__ == "__main__":
+    nums1 = [1, 2, 4, 4, 5]
+    nums2 = [3, 4, 5]
+
+    result = merge(nums1, len(nums1), nums2, len(nums2))
+    for num in result:
+        print(num, end=" ")
